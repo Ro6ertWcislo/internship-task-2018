@@ -1,7 +1,6 @@
 package pl.codewise.internships;
 
 public class Message {
-    // github test
 
     private final String userAgent;
     private final int errorCode;
