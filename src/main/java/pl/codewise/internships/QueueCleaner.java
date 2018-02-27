@@ -14,12 +14,12 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 * It can be done, as the implementation of ConcurrentLinkedQueue is "wait-free", as described in documentation.
 * */
 public class QueueCleaner {
-    static int DELAY = 5000;
+    public static int DELAY = 5000;
 
     private final Timer timer = new Timer();
 
-    public void defaultSchedule(ConcurrentLinkedQueue queue, int maxSize){
-        QueueCleanerTask task = new QueueCleanerTask(queue,maxSize);
-        timer.scheduleAtFixedRate(task,DELAY,DELAY);
+    public void defaultSchedule(ConcurrentLinkedQueue queue, int maxSize) {
+        QueueCleanerTask task = new QueueCleanerTask(queue, maxSize);
+        timer.scheduleAtFixedRate(task, DELAY, DELAY);
     }
 }

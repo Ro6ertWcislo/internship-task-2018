@@ -10,10 +10,11 @@ import java.util.stream.Collectors;
 public class Snapshot {
     private final List<TimedMessage> messages;
 
-    private Snapshot(List<TimedMessage> messages){
+    private Snapshot(List<TimedMessage> messages) {
         this.messages = messages;
     }
-    public static Snapshot of(ConcurrentLinkedQueue<TimedMessage> messages, int MAX_SIZE){
+
+    public static Snapshot of(ConcurrentLinkedQueue<TimedMessage> messages, int MAX_SIZE) {
 
         TimedMessage[] messagesAsArr = messages.toArray(new TimedMessage[0]);
         ArrayUtils.reverse(messagesAsArr);
@@ -23,9 +24,10 @@ public class Snapshot {
                 .collect(Collectors.toList());
         return new Snapshot(filteredMessages);
     }
-    public long numberOfErrorMessages(){
+
+    public long numberOfErrorMessages() {
         return messages.stream()
-                .filter(msg -> msg.getErrorCode() !=0)
+                .filter(msg -> msg.getErrorCode() != 0)
                 .count();
     }
 
